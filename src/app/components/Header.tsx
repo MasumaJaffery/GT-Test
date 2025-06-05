@@ -1,19 +1,9 @@
 'use client';
 
 import { T } from 'gt-next';
-import { useState } from 'react';
+import { LocaleSelector } from 'gt-next/client';
 
 export default function Header() {
-  const [selectedLang, setSelectedLang] = useState('en');
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLang = e.target.value;
-    console.log('Language selected:', newLang);
-    setSelectedLang(newLang);
-    // Intentionally no reload or localStorage here for debugging
-  };
-
-  console.log('Currently selected language:', selectedLang);
 
   return (
     <header
@@ -27,17 +17,7 @@ export default function Header() {
         </T>
       </div>
       <div className="flex space-x-2">
-        <select
-          onChange={handleLanguageChange}
-          value={selectedLang}
-          className="bg-white text-orange-950 px-4 py-2 rounded"
-        >
-          <option value="en">English</option>
-          <option value="ur">اردو</option>
-          <option value="fa">فارسی</option>
-          <option value="ar">العربية</option>
-          <option value="es">Español</option>
-        </select>
+        <LocaleSelector/>
 
         <T key="header.feedback">
           <a
