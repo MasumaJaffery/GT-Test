@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { T } from "gt-next";
+
 
 type Hadith = {
   id: number;
@@ -19,30 +21,30 @@ export default function FetchHadiths() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/hadiths')
-      .then(res => res.json())
-      .then(data => {
-        setHadiths(data);
-        setLoading(false);
-      });
+    fetch('/api/hadiths').
+    then((res) => res.json()).
+    then((data) => {
+      setHadiths(data);
+      setLoading(false);
+    });
   }, []);
 
-  if (loading) return <p className="text-center mt-8">Loading hadiths...</p>;
+  if (loading) return <T id="app.components.fetchhadiths.0"><p className="text-center mt-8">Loading hadiths...</p></T>;
 
   return (
-    <div className="p-4 space-y-6">
+  <div className="p-4 space-y-6">
       {hadiths.map((h) => (
-        <div key={h.id} className="bg-white rounded-xl shadow-md p-4 border-l-4 border-blue-500">
+    <div key={h.id} className="bg-white rounded-xl shadow-md p-4 border-l-4 border-blue-500">
           <p className="text-xl font-bold text-gray-800 mb-2">{h.hadith.text}</p>
           <p className="text-right text-2xl font-semibold text-gray-700 font-[Noto Kufi Arabic] mb-2">{h.hadith.arabic}</p>
           <p className="text-sm text-gray-500">{h.source} — <i>{h.author}</i></p>
           <div className="mt-2 flex flex-wrap gap-2">
             {h.tags.map((tag, idx) => (
-              <span key={idx} className="bg-gray-200 text-sm px-2 py-1 rounded-full">{tag}</span>
-            ))}
+        <span key={idx} className="bg-gray-200 text-sm px-2 py-1 rounded-full">{tag}</span>
+        ))}
           </div>
         </div>
-      ))}
+    ))}
     </div>
   );
 }

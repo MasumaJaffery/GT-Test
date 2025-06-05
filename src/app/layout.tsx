@@ -28,11 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <GTProvider
-      apiKey={process.env.NEXT_PUBLIC_GT_API_KEY}
-      projectId={process.env.NEXT_PUBLIC_GT_PROJECT_ID}
-      defaultLocale="en"
-    >
+       <GTProvider>
       {children}
     </GTProvider>
       </body>
