@@ -1,0 +1,11 @@
+{
+  "framework": "next-app",
+  "locales": [
+    "en",
+    "ur",
+    "fa",
+    "ar",
+    "es"
+  ],
+  "_versionId": "a32dc8b1ac90e703fe0e05cca1b23ac7454daa4356000fb05eddac7a0b3691d9"
+}
