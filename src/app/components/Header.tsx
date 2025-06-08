@@ -1,12 +1,18 @@
 'use client';
 
 import { T } from 'gt-next';
-import { LocaleSelector } from 'gt-next/client';
+import { LocaleSelector, useGT } from 'gt-next/client';
 
 export default function Header() {
+  const { locale, setLocale } = useGT();
+
+  const handleLocaleChange = (newLocale: ing) => {
+    setLocale(newLocale);
+    // No need for router.push or refresh
+  };
 
   return (
-    <header
+    <header 
       className="flex justify-between items-center p-4 text-white w-full fixed top-0 z-[100] shadow-md"
       style={{ backgroundColor: '#e00700' }}
     >
@@ -17,7 +23,17 @@ export default function Header() {
         </T>
       </div>
       <div className="flex space-x-2">
-        <LocaleSelector/>
+        <LocaleSelector 
+          value={locale}
+          onChange={handleLocaleChange}
+          options={[
+            { value: 'en', label: 'English' },
+            { value: 'ar', label: 'العربية' },
+            { value: 'ur', label: 'اردو' },
+            { value: 'fa', label: 'فارسی' },
+            { value: 'es', label: 'Español' }
+          ]}
+        />
 
         <T key="header.feedback">
           <a

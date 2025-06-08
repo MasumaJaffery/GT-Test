@@ -3,7 +3,6 @@ import Head from 'next/head';
 // Import your components
 import Header from '../app/components/Header';
 import FetchHadiths from './components/FetchHadiths';
-
 export default function Home() {
   return (
     <>
